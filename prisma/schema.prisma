@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  Stock
+  Crypto
+  Forex
+  Futures
+}
+
+model Stock {
+  id        Int      @id @default(autoincrement())
+  category  Category @default(Stock)
+  stockName String   @unique
+  logo      String?
+  price     Float
+  growth    Float?
+
+  All_FFCE   All_FFCE? @relation(fields: [all_FFCEId], references: [id])
+  all_FFCEId Int?
+}
+
+model Crypto {
+  id         Int      @id @default(autoincrement())
+  category   Category @default(Crypto)
+  logo       String?
+  cryptoName String   @unique
+  price      Float
+  growth     Float?
+
+  All_FFCE   All_FFCE? @relation(fields: [all_FFCEId], references: [id])
+  all_FFCEId Int?
+}
+
+model Forex {
+  id        Int      @id @default(autoincrement())
+  category  Category @default(Forex)
+  logo      String?
+  forexName String   @unique
+  price     Float
+  growth    Float?
+
+  All_FFCE   All_FFCE? @relation(fields: [all_FFCEId], references: [id])
+  all_FFCEId Int?
+}
+
+model Futures {
+  id          Int      @id @default(autoincrement())
+  category    Category @default(Futures)
+  logo        String?
+  futuresName String   @unique
+  price       Float
+  growth      Float?
+
+  All_FFCE   All_FFCE? @relation(fields: [all_FFCEId], references: [id])
+  all_FFCEId Int?
+}
+
+model All_FFCE {
+  id         Int       @id @default(autoincrement())
+  allStock   Stock[]
+  allCrypto  Crypto[]
+  allForex   Forex[]
+  allFutures Futures[]
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  avatar    String?
+  gmail     String  @unique
+  userName  String? @unique
+  firstName String?
+  lastname  String?
+  password  String
+  role      Role    @default(User)
+
+  Activity Activity[]
+}
+
+model Activity {
+  id       String    @id @default(cuid())
+  user     User      @relation(fields: [userId], references: [id])
+  userId   Int
+  Comments Comment[]
+  News     News[]
+  Idea     Idea[]
+}
+
+model Comment {
+  id         String    @id @default(cuid())
+  message    String    @db.LongText
+  cratedAt   DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  Idea       Idea?     @relation(fields: [ideaId], references: [id])
+  ideaId     String?
+  Activity   Activity? @relation(fields: [activityId], references: [id])
+  activityId String?
+}
+
+model News {
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  publisher  String
+  title      String    @db.Text
+  body       String    @db.LongText
+  icon       String    @default(cuid())
+  Activity   Activity? @relation(fields: [activityId], references: [id])
+  activityId String?
+}
+
+model Idea {
+  id         String    @id @default(cuid())
+  photo      String
+  subject    String    @db.Text
+  body       String    @db.LongText
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  commentBox Comment[]
+  likes      BigInt    @default(0)
+  Activity   Activity? @relation(fields: [activityId], references: [id])
+  activityId String?
+}
+
+enum Role {
+  User
+  Admin
+}
