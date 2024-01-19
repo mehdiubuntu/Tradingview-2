@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+
 import { GiPaperWindmill } from "react-icons/gi";
 import TabsComponent from "./Tabs";
-import axios from "axios";
-import Image from "next/image";
 import AvatarTemplate from "./avatar";
 
 
@@ -78,9 +76,7 @@ const Info = () => {
         </div>
         <div className="  px-2 md:px-5 lg:px-10">
           <div className="  h-auto ">
-
             <TabsComponent />
-
           </div>
         </div>
       </div>

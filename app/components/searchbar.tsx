@@ -53,7 +53,7 @@ const Searchbar = (props: props) => {
       </nav>
       <div
         ref={searchRef}
-        className="  shadow-md container space-y-3 mx-auto w-auto max-h-screen    px-4 md:py-3 md:mt-2  lg:border lg:rounded-2xl  md:max-w-screen-md md:h-3/4   "
+        className="  shadow-md container space-y-3 mx-auto w-auto max-h-screen  overflow-y-auto hide-scrollbar   px-4 md:py-3 md:mt-2  lg:border lg:rounded-2xl md:max-w-screen-md   md:max-h-[600px]   "
       >
         <Tabs.Root
           defaultValue={"symbols"}
@@ -145,6 +145,8 @@ const Searchbar = (props: props) => {
             </Tabs.Content>
           </div>
         </Tabs.Root>
+
+
         <SearchbarItems />
         <SearchbarItems />
         <SearchbarItems />
@@ -152,6 +154,10 @@ const Searchbar = (props: props) => {
         <SearchbarItems />
         <SearchbarItems />
         <SearchbarItems />
+        <SearchbarItems />
+        <SearchbarItems />
+        <SearchbarItems />
+
       </div>
     </section>
   ) : (
