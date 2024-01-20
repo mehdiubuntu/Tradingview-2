@@ -64,7 +64,7 @@ const page = () => {
               </Link>
             </div>
             <div className="my-auto pr-16    pt-8">
-              <Link href={"/root"}>
+              <Link href={"/"}>
                 <Cross1Icon></Cross1Icon>
               </Link>
             </div>

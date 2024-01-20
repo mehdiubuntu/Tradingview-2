@@ -1,7 +1,11 @@
-import Navbar from "../home/navbar";
-import { Theme } from "@radix-ui/themes";
 
-export default function RootLayout({
+import "@radix-ui/themes/styles.css";
+import Navbar from "./navbar";
+import { Theme } from "@radix-ui/themes";
+import Footer from "../components/footer";
+
+
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
@@ -11,6 +15,7 @@ export default function RootLayout({
       <Theme>
         <Navbar></Navbar>
         {children}
+        <Footer background={"bg-black"}></Footer>
       </Theme>
     </>
   );

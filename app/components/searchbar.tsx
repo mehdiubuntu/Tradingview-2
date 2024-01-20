@@ -29,8 +29,8 @@ const Searchbar = (props: props) => {
   });
 
   return props.trigger ? (
-    <section className=" lg:bg-zinc-500/40 bg-white dark:bg-black h-screen w-full fixed  z-50 ">
-      <nav ref={searchRef1} className=" w-full h-16 px-4  pt-3">
+    <section className="  lg:bg-zinc-800/40 dark:lg:bg-zinc-800/40 bg-white dark:bg-black h-screen w-full fixed  z-50 ">
+      <nav ref={searchRef1} className=" w-full bg-white dark:bg-black h-16 px-4  pt-3">
         <div
           className="  h-10 w-auto   flex rounded-full place-content-center md:max-w-screen-md md:mx-auto
             bg-zinc-100 text-slate-600"
@@ -53,7 +53,7 @@ const Searchbar = (props: props) => {
       </nav>
       <div
         ref={searchRef}
-        className="  shadow-md container space-y-3 mx-auto w-auto max-h-screen  overflow-y-auto hide-scrollbar   px-4 md:py-3 md:mt-2  lg:border lg:rounded-2xl md:max-w-screen-md   md:max-h-[600px]   "
+        className="  shadow-md container space-y-3 mx-auto w-auto max-h-screen bg-white dark:bg-black  overflow-y-auto hide-scrollbar   px-4 md:py-3 md:mt-2  lg:border lg:rounded-2xl md:max-w-screen-md   md:max-h-[600px]   "
       >
         <Tabs.Root
           defaultValue={"symbols"}

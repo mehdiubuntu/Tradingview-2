@@ -15,7 +15,6 @@ import { NavbarDropdownTitle } from "../statics/objects";
 import { IoSearchOutline, IoReorderThree } from "react-icons/io5";
 import SideBar from "../components/sidebar";
 import prisma from "@/prisma/client";
-
 import axios from "axios";
 import { string } from "zod";
 import DarkMode from "../components/darkMode";
@@ -23,7 +22,7 @@ interface x {
   id: number;
 }
 const Navbar = () => {
-  const [userGmail, setUserGmail] = useState<string>("");
+  const [userGmail, setUserGmail] = useState<string>("U");
   useEffect(() => {
     const GetuserGmail = async () => {
       ///////////////////////////////////////////
@@ -53,6 +52,7 @@ const Navbar = () => {
   const [searchTrigger, isSearchTrigger] = useState(false);
   const SidebarBtnRef = useRef<HTMLButtonElement>(null);
   const [sidebarStatus, setSidebarStatus] = useState(false);
+
   //   sidebarStatus
   //   ? (document.body.style.overflow = "hidden")
   //   : (document.body.style.overflow = "auto");
